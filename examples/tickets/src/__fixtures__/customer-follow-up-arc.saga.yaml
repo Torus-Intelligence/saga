@@ -1,0 +1,60 @@
+saga_id: customer-follow-up-arc
+harness_version: 1
+duration_days: 7
+app:
+  name: toy-support-desk
+cast:
+  - id: sarah
+    display_name: Sarah Chen
+    role: support_engineer
+  - id: alex
+    display_name: Alex (customer)
+    role: customer
+events:
+  - at: 2026-07-01T08:00:00Z
+    kind: customer_files_ticket
+    customer: alex@example.com
+    subject: Login issue after password reset
+    body: I reset my password but I still cannot login. Account locked maybe?
+    expected_effects:
+      - effect: TicketCreated
+        customer: alex@example.com
+
+  - at: 2026-07-01T08:30:00Z
+    kind: agent_classifies
+    expected_effects:
+      - effect: TicketClassified
+        category: account
+      - effect: ResponseDrafted
+
+  - at: 2026-07-01T10:00:00Z
+    kind: engineer_reviews
+    engineer: sarah
+    decision: approve
+    expected_effects:
+      - effect: EngineerApproved
+      - effect: ResponseSent
+
+  - at: 2026-07-02T11:00:00Z
+    kind: customer_follow_up
+    customer: alex@example.com
+    kind_of_response: satisfaction_survey
+    rating: 5
+    expected_effects:
+      - effect: SatisfactionSurveyReceived
+        exact_rating: 5
+
+  - at: 2026-07-06T15:00:00Z
+    kind: customer_follow_up
+    customer: alex@example.com
+    kind_of_response: follow_up_question
+    body: A new login error appeared today. Different from before.
+    expected_effects:
+      - effect: TicketCreated
+        customer: alex@example.com
+
+  - at: 2026-07-06T16:00:00Z
+    kind: agent_classifies
+    expected_effects:
+      - effect: TicketClassified
+      - effect: ResponseDrafted

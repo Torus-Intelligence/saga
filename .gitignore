@@ -1,0 +1,6 @@
+node_modules/
+.turbo/
+dist/
+coverage/
+__trajectories__/
+.DS_Store
