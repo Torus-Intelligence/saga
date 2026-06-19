@@ -1,0 +1,10 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"paths": {
+			"@torus/saga": ["../../src/index.ts"]
+		},
+		"types": ["bun"]
+	},
+	"include": ["src/**/*"]
+}

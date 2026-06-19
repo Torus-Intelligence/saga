@@ -1,0 +1,59 @@
+saga_id: escalation-flow
+harness_version: 1
+duration_days: 5
+app:
+  name: toy-support-desk
+cast:
+  - id: sarah
+    display_name: Sarah Chen
+    role: support_engineer
+  - id: marcus
+    display_name: Marcus Reyes
+    role: senior_support_engineer
+  - id: priya
+    display_name: Priya (customer)
+    role: customer
+events:
+  - at: 2026-06-10T08:30:00Z
+    kind: customer_files_ticket
+    customer: priya@example.com
+    subject: Urgent refund needed for $2500 charge
+    body: I was charged $2500 incorrectly on my latest invoice and need an urgent refund. Please escalate this as needed.
+    expected_effects:
+      - effect: TicketCreated
+        customer: priya@example.com
+
+  - at: 2026-06-10T09:00:00Z
+    kind: agent_classifies
+    expected_effects:
+      - effect: TicketClassified
+        category: billing
+        priority: high
+
+  - at: 2026-06-10T11:00:00Z
+    kind: engineer_reviews
+    engineer: sarah
+    decision: approve
+    expected_effects:
+      - effect: EngineerEscalated
+        from_engineer: sarah
+        to_engineer: marcus
+
+  - at: 2026-06-13T09:00:00Z
+    kind: engineer_reviews
+    engineer: marcus
+    decision: approve
+    expected_effects:
+      - effect: EngineerApproved
+        engineer: marcus
+      - effect: ResponseSent
+        to_customer: priya@example.com
+
+  - at: 2026-06-14T16:00:00Z
+    kind: customer_follow_up
+    customer: priya@example.com
+    kind_of_response: satisfaction_survey
+    rating: 4
+    expected_effects:
+      - effect: SatisfactionSurveyReceived
+        min_rating: 4
