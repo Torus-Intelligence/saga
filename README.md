@@ -1,6 +1,6 @@
 # Saga
 
-[![CI](https://github.com/Torus-Intelligence/saga-core/actions/workflows/ci.yml/badge.svg)](https://github.com/Torus-Intelligence/saga-core/actions/workflows/ci.yml)
+[![CI](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml/badge.svg)](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 [![Package: @torus/saga](https://img.shields.io/badge/package-%40torus%2Fsaga-cb3837.svg)](./package.json)
 
@@ -22,8 +22,8 @@ and coding agents a compact debugging trail without turning Saga into an eval
 framework or a second application.
 
 ```bash
-git clone https://github.com/Torus-Intelligence/saga-core.git
-cd saga-core && bun install
+git clone https://github.com/Torus-Intelligence/saga.git
+cd saga && bun install
 bun run test:examples
 ```
 
@@ -79,8 +79,8 @@ customer returns -> injectFollowUp       -> createFollowUp()  -> SatisfactionSur
 Source checkout:
 
 ```bash
-git clone https://github.com/Torus-Intelligence/saga-core.git
-cd saga-core
+git clone https://github.com/Torus-Intelligence/saga.git
+cd saga
 bun install
 bun run test:examples
 ```
