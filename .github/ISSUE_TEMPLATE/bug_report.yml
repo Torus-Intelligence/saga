@@ -22,7 +22,7 @@ body:
     id: version
     attributes:
       label: Version
-      placeholder: "@torus/saga 0.0.1"
+      placeholder: "@torus-oss/saga 0.0.1"
   - type: textarea
     id: logs
     attributes:

@@ -29,7 +29,7 @@ import type { DiscriminatorModel, PersonaDiscriminator } from "./discriminator.j
 import type { BehavioralFingerprint } from "./fingerprint.js";
 import type { PersonaScrapeRecord } from "./scrape.js";
 
-const log = namedLogger("@torus/saga:persona-evolve");
+const log = namedLogger("@torus-oss/saga:persona-evolve");
 
 export interface PersonaCandidate {
 	cast_id: string;

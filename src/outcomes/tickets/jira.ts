@@ -7,7 +7,7 @@ import { namedLogger } from "../../logger.js";
 import type { SagaOutcomeContext } from "../../types.js";
 import { buildTicketBody, TICKET_LABELS } from "./common.js";
 
-const log = namedLogger("@torus/saga:jira-ticket");
+const log = namedLogger("@torus-oss/saga:jira-ticket");
 
 export interface JiraConfig {
 	host?: string;

@@ -1,7 +1,7 @@
 /**
  * saga-example-tickets -- toy customer-support saga reference.
  *
- * Wires the toy backend + injectors into @torus/saga's runSagaCore. Domain
+ * Wires the toy backend + injectors into @torus-oss/saga's runSagaCore. Domain
  * adapters supply:
  *   - manifest schema (extends BaseSagaManifestSchema with app + cast)
  *   - dispatcher (event_kind -> injector)
@@ -18,7 +18,7 @@ import {
 	type SagaObservation,
 	type SagaRunResult,
 	type SyncLog,
-} from "@torus/saga";
+} from "@torus-oss/saga";
 import { z } from "zod";
 import { TicketEffectSchema } from "./effects";
 import {

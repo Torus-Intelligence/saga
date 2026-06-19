@@ -2,7 +2,7 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"paths": {
-			"@torus/saga": ["../../src/index.ts"]
+			"@torus-oss/saga": ["../../src/index.ts"]
 		},
 		"types": ["bun"]
 	},

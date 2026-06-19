@@ -1,6 +1,6 @@
 # saga-example-tickets
 
-Reference example for `@torus/saga`. A toy customer-support ticket triage app with multi-step async flows, a tiny agent loop, and five saga fixtures.
+Reference example for `@torus-oss/saga`. A toy customer-support ticket triage app with multi-step async flows, a tiny agent loop, and five saga fixtures.
 
 Replace the toy backend with your own production code, adapt the injectors to drive your real surfaces, and write your own sagas.
 

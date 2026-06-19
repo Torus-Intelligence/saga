@@ -21,7 +21,7 @@
 import { readFile } from "node:fs/promises";
 import { namedLogger } from "../logger.js";
 
-const log = namedLogger("@torus/saga:persona-scrape");
+const log = namedLogger("@torus-oss/saga:persona-scrape");
 
 export interface PersonaScrapeQuery {
 	firm_name?: string;
