@@ -1,9 +1,23 @@
 # Saga
 
-Scenario tests for workflows that do not fit in unit tests.
+[![CI](https://github.com/Torus-Intelligence/saga-core/actions/workflows/ci.yml/badge.svg)](https://github.com/Torus-Intelligence/saga-core/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
+[![Package: @torus/saga](https://img.shields.io/badge/package-%40torus%2Fsaga-cb3837.svg)](./package.json)
 
-Write a YAML story. Drive your real backend workflow through DI. Assert the
-typed effects that should happen. Dump a trajectory when it fails.
+Scenario tests for workflows that are too long for unit tests and too internal
+for browser tests.
+
+Saga is for the product behavior that usually gets tested by vibes: a customer
+opens a case, the system classifies it, an engineer approves or escalates it,
+the customer follows up days later, and the right side effects need to happen
+at every step. Instead of clicking through a UI or mocking the whole world, you
+write the story as YAML, drive your real workflow code through small injectors,
+and assert the typed effects your system emitted.
+
+When a Saga fails, it tells you which expected effect was missing and can dump a
+JSONL trajectory of the events, observations, and failures. That gives humans
+and coding agents a compact debugging trail without turning Saga into an eval
+framework or a second application.
 
 ```bash
 git clone https://github.com/Torus-Intelligence/saga-core.git
@@ -13,7 +27,29 @@ bun run test:examples
 
 [Example](./examples/tickets) · [Agent skill](./skills/saga) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
 
-## What It Tests
+## The Shape
+
+```mermaid
+flowchart LR
+  yaml["YAML saga<br/>multi-day story"] --> runner["Saga runner"]
+  runner --> injectors["Injectors<br/>call your real code"]
+  injectors --> effects["Observed effects"]
+  effects --> verifier["Typed matchers"]
+  verifier --> result{"Passed?"}
+  result -->|yes| green["Ship the workflow"]
+  result -->|no| trace["Trajectory JSONL<br/>plus optional outcome adapter"]
+```
+
+Saga sits between unit tests and end-to-end tests:
+
+| Question | Usual test | Saga's job |
+|---|---|---|
+| Did this function branch work? | Unit test | Too small for Saga. |
+| Did the UI button render? | Browser E2E | Too indirect for Saga. |
+| Did this multi-step backend workflow behave correctly over time? | Usually manual QA or hope | Saga fixture. |
+| Did a failure deserve a PR or a ticket? | Human triage | Optional outcome adapter. |
+
+## What It Feels Like
 
 Saga is for workflows that unfold over multiple steps:
 
@@ -26,6 +62,15 @@ day 6  customer follows up
 
 The test does not click a browser or fake an HTTP contract. It calls your real
 workflow functions through injectors and verifies the effects they emit.
+
+```text
+fixture story       your adapter            product code          Saga verdict
+-------------       ------------            ------------          ------------
+customer files  ->  injectTicketCreated  ->  createTicket()    ->  TicketCreated
+agent classifies ->  injectClassification ->  classifyTicket()  ->  TicketClassified
+engineer reviews -> injectEngineerReview -> approveResponse() -> ResponseSent
+customer returns -> injectFollowUp       -> createFollowUp()  -> SatisfactionSurveyReceived
+```
 
 ## Install
 
