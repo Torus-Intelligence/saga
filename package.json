@@ -22,6 +22,7 @@
 		"backend"
 	],
 	"files": [
+		"assets",
 		"dist",
 		"skills",
 		"README.md",

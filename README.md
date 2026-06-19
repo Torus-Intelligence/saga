@@ -4,6 +4,8 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 [![Package: @torus/saga](https://img.shields.io/badge/package-%40torus%2Fsaga-cb3837.svg)](./package.json)
 
+![Saga banner](./assets/saga-banner.svg)
+
 Scenario tests for workflows that are too long for unit tests and too internal
 for browser tests.
 
