@@ -1,0 +1,99 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Saga</title>
+  <desc id="desc">Saga — tell your workflow as a story, then watch it run against real code. A friendly dev-tool sibling in the Torus family.</desc>
+
+  <defs>
+    <linearGradient id="latFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#3A2E24" stop-opacity="0.12"/>
+      <stop offset="25%"  stop-color="#3A2E24" stop-opacity="0.62"/>
+      <stop offset="50%"  stop-color="#3A2E24" stop-opacity="0.12"/>
+      <stop offset="75%"  stop-color="#3A2E24" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#3A2E24" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="eqFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#E67E22" stop-opacity="0.45"/>
+      <stop offset="22%"  stop-color="#E67E22" stop-opacity="1"/>
+      <stop offset="50%"  stop-color="#E67E22" stop-opacity="0.55"/>
+      <stop offset="78%"  stop-color="#E67E22" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#E67E22" stop-opacity="0.45"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="22%" cy="26%" r="96%">
+      <stop offset="0%"  stop-color="#FFF6EC"/>
+      <stop offset="58%" stop-color="#FBF7F1"/>
+      <stop offset="100%" stop-color="#F1EBE2"/>
+    </radialGradient>
+    <clipPath id="frame"><rect width="1280" height="640"/></clipPath>
+  </defs>
+
+  <!-- Full-bleed warm paper so platform cropping/rounding never shows a seam -->
+  <rect width="1280" height="640" fill="url(#warm)"/>
+
+  <g clip-path="url(#frame)">
+    <!-- Family resemblance: a big, soft torus drifting off the right edge -->
+    <g transform="translate(1180 350) rotate(-9)" opacity="0.5">
+      <ellipse cx="0" cy="-104" rx="300" ry="94" fill="none" stroke="#E67E22" stroke-opacity="0.16" stroke-width="2"/>
+      <ellipse cx="0" cy="0"    rx="356" ry="116" fill="none" stroke="#E67E22" stroke-opacity="0.20" stroke-width="2"/>
+      <ellipse cx="0" cy="0"    rx="124" ry="42"  fill="none" stroke="#E67E22" stroke-opacity="0.20" stroke-width="2"/>
+      <ellipse cx="0" cy="104"  rx="300" ry="94" fill="none" stroke="#E67E22" stroke-opacity="0.16" stroke-width="2"/>
+    </g>
+    <path d="M1066 150 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 z" fill="#E67E22" opacity="0.5"/>
+    <path d="M928 470 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" fill="#E8B27A" opacity="0.65"/>
+  </g>
+
+  <!-- Logo mark: the cute torus donut -->
+  <g transform="translate(168 234)">
+    <ellipse cx="0" cy="-22" rx="56" ry="21" fill="none" stroke="url(#latFade)" stroke-width="3.6" stroke-linecap="round"/>
+    <ellipse cx="0" cy="0"   rx="66" ry="25" fill="none" stroke="url(#eqFade)"  stroke-width="5.4" stroke-linecap="round"/>
+    <ellipse cx="0" cy="0"   rx="22" ry="9"  fill="#E67E22" fill-opacity="0.14" stroke="#E67E22" stroke-width="3.2"/>
+    <ellipse cx="0" cy="22"  rx="56" ry="21" fill="none" stroke="url(#latFade)" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M60 -42 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" fill="#E67E22"/>
+  </g>
+
+  <!-- Wordmark + friendly amber dot -->
+  <text x="262" y="262" fill="#2A211A"
+    font-family="'Space Grotesk', 'Geist', ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+    font-size="96" font-weight="700" letter-spacing="-0.015em">Saga</text>
+  <circle cx="520" cy="250" r="11" fill="#E67E22"/>
+
+  <!-- Maker's mark -->
+  <g transform="translate(938 92)" opacity="0.9">
+    <ellipse cx="0" cy="-3.8" rx="10" ry="3.4" fill="none" stroke="#9A7B3C" stroke-width="1.2"/>
+    <ellipse cx="0" cy="0"    rx="12.5" ry="4.4" fill="none" stroke="#9A7B3C" stroke-width="1.5"/>
+    <ellipse cx="0" cy="3.8"  rx="10" ry="3.4" fill="none" stroke="#9A7B3C" stroke-width="1.2"/>
+    <text x="22" y="5.5" fill="#9A7B3C"
+      font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
+      font-size="16" letter-spacing="0.04em">part of the Torus family</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="124" y="356" fill="#5A4A3C"
+    font-family="'IBM Plex Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+    font-size="33" font-weight="400" letter-spacing="-0.005em">Tell your workflow as a story, then watch it run against real code.</text>
+
+  <!-- The story, as a little hop-along flow -->
+  <g transform="translate(124 444)"
+     font-family="'IBM Plex Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+     font-size="20" font-weight="500">
+    <path d="M6 8 C 120 -16, 160 -16, 250 8 S 420 32, 510 8 S 680 -16, 770 8"
+          stroke="#E67E22" stroke-opacity="0.45" stroke-width="2.6" stroke-linecap="round"
+          stroke-dasharray="1 12"/>
+
+    <circle cx="6" cy="8" r="6.5" fill="#C98A53"/>
+    <text x="6" y="50" fill="#6B5B4C" text-anchor="middle">write the story</text>
+
+    <circle cx="258" cy="8" r="6.5" fill="#C98A53"/>
+    <text x="258" y="50" fill="#6B5B4C" text-anchor="middle">run real code</text>
+
+    <circle cx="510" cy="8" r="6.5" fill="#C98A53"/>
+    <text x="510" y="50" fill="#6B5B4C" text-anchor="middle">check the effects</text>
+
+    <rect x="700" y="-13" width="150" height="42" rx="21" fill="#E67E22" fill-opacity="0.12" stroke="#E67E22" stroke-opacity="0.5"/>
+    <path d="M730 8 l6.5 8 14 -17" fill="none" stroke="#C56A15" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="762" y="15" fill="#C56A15" font-weight="600" font-size="22">passed</text>
+  </g>
+
+  <!-- Terminal line -->
+  <text x="124" y="566" fill="#9A8B7C"
+    font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+    font-size="19" letter-spacing="0.01em"><tspan fill="#E67E22">$</tspan> bun run test:examples</text>
+</svg>
