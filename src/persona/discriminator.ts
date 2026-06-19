@@ -13,7 +13,7 @@
 import { namedLogger } from "../logger.js";
 import type { BehavioralFingerprint } from "./fingerprint.js";
 
-const log = namedLogger("@torus/saga:persona-discriminator");
+const log = namedLogger("@torus-oss/saga:persona-discriminator");
 
 export interface DiscriminatorSample {
 	fingerprint: BehavioralFingerprint;

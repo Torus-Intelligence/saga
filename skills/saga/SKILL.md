@@ -1,6 +1,6 @@
 ---
 name: saga
-description: Author, adapt, and run Saga scenario tests for backend or agent workflows using @torus/saga. Use when Codex needs to add or debug YAML Saga fixtures, wire event injectors to production code through DI, define typed effect matchers, inspect trajectory failures, configure fail-stop/auto-PR/ticket outcome adapters, or add persona simulation with scrape/fingerprint/discriminator/evolve modules.
+description: Author, adapt, and run Saga scenario tests for backend or agent workflows using @torus-oss/saga. Use when Codex needs to add or debug YAML Saga fixtures, wire event injectors to production code through DI, define typed effect matchers, inspect trajectory failures, configure fail-stop/auto-PR/ticket outcome adapters, or add persona simulation with scrape/fingerprint/discriminator/evolve modules.
 ---
 
 # Saga

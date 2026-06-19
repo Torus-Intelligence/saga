@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml/badge.svg)](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
-[![Package: @torus/saga](https://img.shields.io/badge/package-%40torus%2Fsaga-cb3837.svg)](./package.json)
+[![Package: @torus-oss/saga](https://img.shields.io/badge/package-%40torus--oss%2Fsaga-cb3837.svg)](./package.json)
 
 ![Saga banner](./assets/saga-banner.svg)
 
@@ -88,7 +88,7 @@ bun run test:examples
 When published to npm:
 
 ```bash
-bun add @torus/saga
+bun add @torus-oss/saga
 ```
 
 For coding agents, copy or install the bundled skill from `skills/saga` and
@@ -107,7 +107,7 @@ import {
   BaseSagaManifestSchema,
   MatcherRegistry,
   runSagaCore,
-} from "@torus/saga";
+} from "@torus-oss/saga";
 
 const TicketEffect = z.discriminatedUnion("effect", [
   z.object({

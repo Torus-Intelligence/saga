@@ -1,5 +1,5 @@
 /**
- * @torus/saga
+ * @torus-oss/saga
  *
  * Generic scenario-based testing system. Hand-authored YAML manifests
  * describe events across days; the runner dispatches each event to a

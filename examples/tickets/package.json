@@ -3,14 +3,14 @@
 	"version": "0.0.1",
 	"private": true,
 	"license": "Apache-2.0",
-	"description": "Reference example for @torus/saga. Toy customer-support ticket triage workflow with multi-step async flows, a tiny agent loop, and five saga fixtures.",
+	"description": "Reference example for @torus-oss/saga. Toy customer-support ticket triage workflow with multi-step async flows, a tiny agent loop, and five saga fixtures.",
 	"type": "module",
 	"main": "src/index.ts",
 	"scripts": {
 		"test": "bun test --timeout 15000 src/__tests__/"
 	},
 	"dependencies": {
-		"@torus/saga": "file:../..",
+		"@torus-oss/saga": "file:../..",
 		"yaml": "^2.9.0",
 		"zod": "^4.4.3"
 	},

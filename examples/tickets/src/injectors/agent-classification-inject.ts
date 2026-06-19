@@ -2,7 +2,7 @@
  * agent_classifies event: agent runs classify + draft on the most recent
  * open ticket (or a specific ticket_id when provided).
  */
-import type { SyncLog } from "@torus/saga";
+import type { SyncLog } from "@torus-oss/saga";
 import { classifyAndDraft } from "../toy-app/agent";
 import type { TicketStore } from "../toy-app/backend";
 

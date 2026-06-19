@@ -2,7 +2,7 @@
  * engineer_reviews event: support engineer approves, rejects, or
  * escalates the drafted response.
  */
-import type { SyncLog } from "@torus/saga";
+import type { SyncLog } from "@torus-oss/saga";
 import {
 	approveDraft,
 	type EngineerId,

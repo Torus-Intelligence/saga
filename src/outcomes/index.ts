@@ -24,7 +24,7 @@ import { failStopAdapter } from "./fail-stop.js";
 import { hybridAdapter } from "./hybrid.js";
 import { ticketAdapter } from "./ticket.js";
 
-const log = namedLogger("@torus/saga:outcomes");
+const log = namedLogger("@torus-oss/saga:outcomes");
 
 export type AdapterName = "fail_stop" | "auto_pr" | "ticket" | "hybrid";
 
