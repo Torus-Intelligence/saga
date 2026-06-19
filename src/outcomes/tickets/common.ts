@@ -5,7 +5,7 @@
  */
 
 import { readFileSync } from "node:fs";
-import type { SagaOutcomeContext } from "../../types";
+import type { SagaOutcomeContext } from "../../types.js";
 
 export const TICKET_LABELS = ["saga-failure", "auto-filed"] as const;
 

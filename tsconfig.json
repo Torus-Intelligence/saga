@@ -7,7 +7,6 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"types": ["bun"],
-		"allowImportingTsExtensions": true,
 		"noEmit": true
 	},
 	"include": ["src/**/*"]

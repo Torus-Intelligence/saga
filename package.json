@@ -1,23 +1,59 @@
 {
-	"name": "saga-core",
+	"name": "@torus/saga",
 	"version": "0.0.1",
 	"license": "Apache-2.0",
 	"description": "YAML-driven scenario runner with pluggable dispatch, verification, trajectories, outcome adapters, and persona evolution.",
 	"type": "module",
-	"main": "src/index.ts",
-	"types": "src/index.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Torus-Intelligence/saga-core.git"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"keywords": [
+		"workflow",
+		"testing",
+		"scenario",
+		"yaml",
+		"backend"
+	],
+	"files": [
+		"dist",
+		"skills",
+		"README.md",
+		"LICENSE",
+		"SECURITY.md"
+	],
 	"exports": {
-		".": "./src/index.ts",
-		"./outcomes": "./src/outcomes/index.ts",
-		"./persona": "./src/persona/index.ts"
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./outcomes": {
+			"types": "./dist/outcomes/index.d.ts",
+			"import": "./dist/outcomes/index.js"
+		},
+		"./persona": {
+			"types": "./dist/persona/index.d.ts",
+			"import": "./dist/persona/index.js"
+		}
 	},
 	"workspaces": [
 		"examples/*"
 	],
 	"scripts": {
-		"test": "bun test --timeout 15000 --pass-with-no-tests src/__tests__/",
-		"test:examples": "bun test --timeout 15000 examples/tickets/src/__tests__/",
-		"typecheck": "tsc -p tsconfig.json --noEmit && tsc -p examples/tickets/tsconfig.json --noEmit"
+		"build": "rm -rf dist && tsc -p tsconfig.build.json",
+		"test": "bun test --timeout 15000 src/__tests__/",
+		"test:examples": "bun run build && bun test --timeout 15000 examples/tickets/src/__tests__/",
+		"smoke:dist": "bun -e \"import('./dist/index.js').then(m => { if (!m.runSagaCore || !m.MatcherRegistry) throw new Error('dist export smoke failed') })\"",
+		"pack:dry-run": "bun pm pack --dry-run",
+		"ci": "bun run typecheck && bun run test && bun run test:examples && bun run smoke:dist && bun run pack:dry-run",
+		"typecheck": "tsc -p tsconfig.json --noEmit && bun run build && tsc -p examples/tickets/tsconfig.json --noEmit",
+		"prepublishOnly": "bun run typecheck && bun run test && bun run test:examples"
 	},
 	"dependencies": {
 		"yaml": "^2.9.0",

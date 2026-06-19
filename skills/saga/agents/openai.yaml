@@ -1,0 +1,4 @@
+interface:
+  display_name: "Saga"
+  short_description: "Author and run Saga workflow tests"
+  default_prompt: "Use $saga to add a Saga fixture for this workflow and verify it against the existing code."

@@ -14,7 +14,7 @@
  * aggregate fitness.
  */
 
-import type { PersonaScrapeRecord } from "./scrape";
+import type { PersonaScrapeRecord } from "./scrape.js";
 
 export interface BehavioralFingerprint {
 	dimensions: Record<string, number>;

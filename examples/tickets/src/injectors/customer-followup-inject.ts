@@ -2,7 +2,7 @@
  * customer_follow_up event: customer responds. Used for satisfaction
  * surveys and follow-up questions on resolved tickets.
  */
-import type { SyncLog } from "saga-core";
+import type { SyncLog } from "@torus/saga";
 import { recordSatisfaction, type TicketStore } from "../toy-app/backend";
 
 export interface CustomerFollowUpEvent {

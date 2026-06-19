@@ -37,7 +37,7 @@ The persona surface is optional and generic:
 - `discriminator`: score real-vs-synthetic separation with the logistic-regression baseline.
 - `evolve`: generate and mutate synthetic personas against the discriminator and coverage goals.
 
-Consumers define their own dimensions. Do not ship private customer dimensions in saga-core.
+Consumers define their own dimensions. Do not ship private customer dimensions in Saga.
 
 ## Persona Quality Checks
 

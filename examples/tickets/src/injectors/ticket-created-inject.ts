@@ -1,7 +1,7 @@
 /**
  * customer_files_ticket event: customer files a new ticket.
  */
-import type { SyncLog } from "saga-core";
+import type { SyncLog } from "@torus/saga";
 import type { TicketStore } from "../toy-app/backend";
 
 export interface TicketCreatedEvent {

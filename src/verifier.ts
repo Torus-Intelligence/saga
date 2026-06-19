@@ -21,7 +21,7 @@ import type {
 	SagaEffectBase,
 	SagaObservation,
 	SurpriseObservation,
-} from "./types";
+} from "./types.js";
 
 export type MatchFn = (
 	expected: SagaEffectBase,

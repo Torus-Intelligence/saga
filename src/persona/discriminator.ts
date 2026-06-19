@@ -10,10 +10,10 @@
  * here; consumers can drop in a heavier model behind the same interface.
  */
 
-import { namedLogger } from "../logger";
-import type { BehavioralFingerprint } from "./fingerprint";
+import { namedLogger } from "../logger.js";
+import type { BehavioralFingerprint } from "./fingerprint.js";
 
-const log = namedLogger("saga-core:persona-discriminator");
+const log = namedLogger("@torus/saga:persona-discriminator");
 
 export interface DiscriminatorSample {
 	fingerprint: BehavioralFingerprint;

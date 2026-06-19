@@ -10,7 +10,7 @@ import {
   BaseSagaManifestSchema,
   MatcherRegistry,
   runSagaCore,
-} from "saga-core";
+} from "@torus/saga";
 import { z } from "zod";
 
 const Effect = z.discriminatedUnion("effect", [
