@@ -8,9 +8,10 @@
  * verification.
  */
 
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
-import { CURRENT_HARNESS_VERSION } from "./types";
+import { CURRENT_HARNESS_VERSION } from "./types.js";
 
 export interface TrajectoryHeader {
 	saga_id: string;
@@ -89,15 +90,17 @@ export class TrajectoryRecorder {
 
 function resolveCommitHash(): string {
 	const envHash =
+		process.env.SAGA_COMMIT_SHA ??
 		process.env.TORUS_COMMIT_SHA ??
 		process.env.GIT_COMMIT ??
 		process.env.GITHUB_SHA;
 	if (envHash) return envHash;
 	try {
-		const { execSync } = require("node:child_process");
-		return String(
-			execSync("git rev-parse HEAD", { stdio: ["ignore", "pipe", "ignore"] }),
-		).trim();
+		return execFileSync("git", ["rev-parse", "HEAD"], {
+			stdio: ["ignore", "pipe", "ignore"],
+		})
+			.toString()
+			.trim();
 	} catch {
 		return "";
 	}

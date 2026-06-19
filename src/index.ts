@@ -1,5 +1,5 @@
 /**
- * saga-core
+ * @torus/saga
  *
  * Generic scenario-based testing system. Hand-authored YAML manifests
  * describe events across days; the runner dispatches each event to a
@@ -16,7 +16,7 @@
  * primitives.
  */
 
-export * from "./logger";
+export * from "./logger.js";
 export {
 	__setGitHubClientForTest,
 	__setLlmDrafterForTest,
@@ -32,20 +32,20 @@ export {
 	getLlmDrafter,
 	type LlmDrafter,
 	parseDrafterReply,
-} from "./outcomes/auto-pr";
-export { SagaAssertionFailedError } from "./outcomes/fail-stop";
+} from "./outcomes/auto-pr.js";
+export { SagaAssertionFailedError } from "./outcomes/fail-stop.js";
 export {
 	autoPrAdapter,
 	DefaultOutcomeDispatcher,
 	failStopAdapter,
 	hybridAdapter,
 	ticketAdapter,
-} from "./outcomes/index";
+} from "./outcomes/index.js";
 export {
 	configureTicketProvider,
 	type TicketProvider,
-} from "./outcomes/ticket";
-export { buildTicketBody, TICKET_LABELS } from "./outcomes/tickets/common";
+} from "./outcomes/ticket.js";
+export { buildTicketBody, TICKET_LABELS } from "./outcomes/tickets/common.js";
 export {
 	__setGitHubIssuesClientForTest,
 	configureGitHubIssues,
@@ -54,7 +54,7 @@ export {
 	type GitHubIssuesClient,
 	getGitHubIssuesClient,
 	handleGitHubIssueFailure,
-} from "./outcomes/tickets/github-issues";
+} from "./outcomes/tickets/github-issues.js";
 export {
 	__setJiraClientForTest,
 	configureJira,
@@ -63,7 +63,7 @@ export {
 	type JiraClient,
 	type JiraCreateIssueArgs,
 	type JiraCreateIssueResult,
-} from "./outcomes/tickets/jira";
+} from "./outcomes/tickets/jira.js";
 export {
 	__setLinearClientForTest,
 	configureLinear,
@@ -72,9 +72,9 @@ export {
 	type LinearClient,
 	type LinearCreateIssueArgs,
 	type LinearCreateIssueResult,
-} from "./outcomes/tickets/linear";
-export * from "./recorder";
-export * from "./runner";
-export * from "./trajectory";
-export * from "./types";
-export * from "./verifier";
+} from "./outcomes/tickets/linear.js";
+export * from "./recorder.js";
+export * from "./runner.js";
+export * from "./trajectory.js";
+export * from "./types.js";
+export * from "./verifier.js";

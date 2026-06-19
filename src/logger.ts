@@ -1,7 +1,6 @@
 /**
  * Minimal logger contract. Defaults to console; consumers inject their own
- * adapter. Downstream users can wire pino,
- * winston, or anything else).
+ * adapter. Downstream users can wire pino, winston, or anything else.
  */
 
 export interface SagaLogger {
@@ -12,17 +11,17 @@ export interface SagaLogger {
 
 const consoleLogger: SagaLogger = {
 	info(msg, extra) {
-		if (extra) console.log(`[saga-core] ${msg}`, extra);
-		else console.log(`[saga-core] ${msg}`);
+		if (extra) console.log(`[saga] ${msg}`, extra);
+		else console.log(`[saga] ${msg}`);
 	},
 	warn(msg, extra) {
-		if (extra) console.warn(`[saga-core] ${msg}`, extra);
-		else console.warn(`[saga-core] ${msg}`);
+		if (extra) console.warn(`[saga] ${msg}`, extra);
+		else console.warn(`[saga] ${msg}`);
 	},
 	debug(msg, extra) {
 		if (process.env.SAGA_DEBUG !== "1") return;
-		if (extra) console.debug(`[saga-core] ${msg}`, extra);
-		else console.debug(`[saga-core] ${msg}`);
+		if (extra) console.debug(`[saga] ${msg}`, extra);
+		else console.debug(`[saga] ${msg}`);
 	},
 };
 

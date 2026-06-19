@@ -9,7 +9,7 @@
  * Deliberately dumb -- no LLM, no DB, just a typed buffer.
  */
 
-import type { SagaObservation, SyncLog } from "./types";
+import type { SagaObservation, SyncLog } from "./types.js";
 
 export class SagaRecorder {
 	private seqCounter = 0;

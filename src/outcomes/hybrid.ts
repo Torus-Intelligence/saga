@@ -7,10 +7,10 @@
  *   - info or unset -> fail-stop adapter
  */
 
-import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types";
-import { autoPrAdapter } from "./auto-pr";
-import { failStopAdapter } from "./fail-stop";
-import { ticketAdapter } from "./ticket";
+import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types.js";
+import { autoPrAdapter } from "./auto-pr.js";
+import { failStopAdapter } from "./fail-stop.js";
+import { ticketAdapter } from "./ticket.js";
 
 export const hybridAdapter: SagaOutcomeAdapter = {
 	name: "hybrid",

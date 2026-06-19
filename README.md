@@ -1,10 +1,9 @@
-# saga-core
+# Saga
 
 Scenario tests for workflows that do not fit in unit tests.
 
-Write a YAML story. Drive your real backend or agent loop through DI. Assert the
-typed effects that should happen. Dump a trajectory when it fails. Hand the same
-surface to coding agents through the bundled skill.
+Write a YAML story. Drive your real backend workflow through DI. Assert the
+typed effects that should happen. Dump a trajectory when it fails.
 
 ```bash
 git clone https://github.com/Torus-Intelligence/saga-core.git
@@ -12,7 +11,7 @@ cd saga-core && bun install
 bun run test:examples
 ```
 
-[Example](./examples/tickets) · [Agent skill](./skills/saga-core) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
+[Example](./examples/tickets) · [Agent skill](./skills/saga) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
 
 ## What It Tests
 
@@ -42,14 +41,14 @@ bun run test:examples
 When published to npm:
 
 ```bash
-bun add saga-core
+bun add @torus/saga
 ```
 
-For coding agents, copy or install the bundled skill from `skills/saga-core` and
+For coding agents, copy or install the bundled skill from `skills/saga` and
 ask:
 
 ```text
-Use $saga-core to add a Saga fixture for the new escalation workflow.
+Use $saga to add a Saga fixture for the new escalation workflow.
 ```
 
 ## 60 Second Version
@@ -61,7 +60,7 @@ import {
   BaseSagaManifestSchema,
   MatcherRegistry,
   runSagaCore,
-} from "saga-core";
+} from "@torus/saga";
 
 const TicketEffect = z.discriminatedUnion("effect", [
   z.object({
@@ -131,7 +130,7 @@ for cross-event continuity.
 | Browser E2E | User-visible UI behavior. | Too slow and indirect for backend or agent pipelines. |
 | Contract tests | Provider and consumer compatibility. | Does not verify the full internal workflow. |
 | BDD text tests | Human-readable acceptance cases. | Usually string-bound and weakly typed. |
-| Agent evals | Model quality and task success. | Saga is a dev-tool harness for product code paths. |
+| Eval harnesses | Model quality and task success. | Saga is a dev-tool harness for product code paths. |
 
 ## What Saga Provides
 
@@ -144,10 +143,9 @@ for cross-event continuity.
 | Outcome adapters | Fail fast, draft a PR, open a ticket, or route by severity. |
 | Persona modules | Scrape, fingerprint, discriminate, and evolve synthetic cast members. |
 
-## For Agents
+## Codex Skill
 
-`skills/saga-core` is part of the repo because Saga is meant to be used by
-coding agents as well as humans. The skill tells an agent how to:
+`skills/saga` tells Codex how to:
 
 - author `*.saga.yaml` fixtures;
 - wire event schemas, effect schemas, injectors, and matchers;
@@ -155,18 +153,12 @@ coding agents as well as humans. The skill tells an agent how to:
 - configure fail-stop, auto-PR, ticket, and hybrid outcome adapters;
 - use persona simulation without putting private domain data in the core library.
 
-Validate the skill:
-
-```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py skills/saga-core
-```
-
 ## Example App
 
 `examples/tickets` is a neutral customer-support app:
 
 - In-memory ticket backend.
-- Deterministic agent loop.
+- Deterministic classification loop.
 - Four injectors.
 - Eight effect types.
 - Five multi-day saga fixtures.
@@ -179,7 +171,7 @@ bun run test:examples
 
 ## Design Rules
 
-- Keep saga-core generic. Domain-specific events, effects, injectors, and persona
+- Keep Saga generic. Domain-specific events, effects, injectors, and persona
   dimensions belong in the consuming app.
 - Drive real product logic through DI boundaries. Stub nondeterministic services
   such as LLMs, databases, ticket trackers, git hosts, and wall-clock time.
@@ -197,7 +189,7 @@ src/
   outcomes/              fail-stop, auto-PR, ticket, hybrid adapters
   persona/               scrape, fingerprint, discriminator, evolve
 examples/tickets/        neutral reference app
-skills/saga-core/        Codex skill for AI agents using Saga
+skills/saga/               Codex skill for AI agents using Saga
 ```
 
 ## Development
@@ -207,17 +199,8 @@ bun install
 bun run typecheck
 bun run test
 bun run test:examples
-python3 /path/to/skill-creator/scripts/quick_validate.py skills/saga-core
 ```
 
 ## Status
 
 The API is early and expected to change before 1.0.
-
-## Readme Notes
-
-The README shape follows the current dev-tool norm: install first, runnable
-example second, agent surface visible near the top, deeper API notes after that.
-The implementation borrows ideas from Pytest-Tavern (`save:`), METR-style task
-metadata (`harness_version`), WebArena-style outcomes, and PPol-style persona
-evolution.

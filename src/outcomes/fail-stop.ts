@@ -8,7 +8,7 @@
  * is enough to diagnose without opening the trajectory dump.
  */
 
-import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types";
+import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types.js";
 
 export class SagaAssertionFailedError extends Error {
 	constructor(

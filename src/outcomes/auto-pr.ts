@@ -14,10 +14,10 @@
  */
 
 import { readFile } from "node:fs/promises";
-import { namedLogger } from "../logger";
-import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types";
+import { namedLogger } from "../logger.js";
+import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types.js";
 
-const log = namedLogger("saga-core:auto-pr");
+const log = namedLogger("@torus/saga:auto-pr");
 
 export interface AutoPrConfig {
 	github_token?: string;

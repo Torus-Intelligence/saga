@@ -10,7 +10,7 @@
  * when you want failures routed.
  */
 
-import { namedLogger } from "../logger";
+import { namedLogger } from "../logger.js";
 import type {
 	AssertionFailure,
 	BaseSagaManifest,
@@ -18,13 +18,13 @@ import type {
 	SagaOutcomeContext,
 	SagaOutcomeResult,
 	SagaRunResult,
-} from "../types";
-import { autoPrAdapter } from "./auto-pr";
-import { failStopAdapter } from "./fail-stop";
-import { hybridAdapter } from "./hybrid";
-import { ticketAdapter } from "./ticket";
+} from "../types.js";
+import { autoPrAdapter } from "./auto-pr.js";
+import { failStopAdapter } from "./fail-stop.js";
+import { hybridAdapter } from "./hybrid.js";
+import { ticketAdapter } from "./ticket.js";
 
-const log = namedLogger("saga-core:outcomes");
+const log = namedLogger("@torus/saga:outcomes");
 
 export type AdapterName = "fail_stop" | "auto_pr" | "ticket" | "hybrid";
 

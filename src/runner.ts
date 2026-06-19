@@ -18,9 +18,9 @@ import { readFile } from "node:fs/promises";
 import { dirname, isAbsolute, join, resolve } from "node:path";
 import { parse } from "yaml";
 import type { z } from "zod";
-import { namedLogger } from "./logger";
-import { SagaRecorder } from "./recorder";
-import { TrajectoryRecorder, trajectoryDumpEnabled } from "./trajectory";
+import { namedLogger } from "./logger.js";
+import { SagaRecorder } from "./recorder.js";
+import { TrajectoryRecorder, trajectoryDumpEnabled } from "./trajectory.js";
 import {
 	type BaseSagaEvent,
 	type BaseSagaManifest,
@@ -30,8 +30,8 @@ import {
 	type SagaRunResult,
 	type SagaState,
 	type SyncLog,
-} from "./types";
-import { type MatcherRegistry, type MatchFn, verify } from "./verifier";
+} from "./types.js";
+import { type MatcherRegistry, type MatchFn, verify } from "./verifier.js";
 
 const log = namedLogger("runner");
 
@@ -348,7 +348,7 @@ function applySaveDirective(
 	}
 }
 
-const SELECTOR = /^effects\.([a-z_]+)\[(\d+)\]\.([a-zA-Z0-9_]+)$/;
+const SELECTOR = /^effects\.([A-Za-z0-9_]+)\[(\d+)\]\.([a-zA-Z0-9_]+)$/;
 
 function evalSelector(selector: string, sync: SyncLog): unknown {
 	const m = selector.match(SELECTOR);

@@ -24,12 +24,12 @@
  *     per-dimension fitness, not just an aggregate score.
  */
 
-import { namedLogger } from "../logger";
-import type { DiscriminatorModel, PersonaDiscriminator } from "./discriminator";
-import type { BehavioralFingerprint } from "./fingerprint";
-import type { PersonaScrapeRecord } from "./scrape";
+import { namedLogger } from "../logger.js";
+import type { DiscriminatorModel, PersonaDiscriminator } from "./discriminator.js";
+import type { BehavioralFingerprint } from "./fingerprint.js";
+import type { PersonaScrapeRecord } from "./scrape.js";
 
-const log = namedLogger("saga-core:persona-evolve");
+const log = namedLogger("@torus/saga:persona-evolve");
 
 export interface PersonaCandidate {
 	cast_id: string;

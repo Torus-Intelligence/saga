@@ -3,11 +3,11 @@
  * and tags it `saga-failure`, `auto-filed`.
  */
 
-import { namedLogger } from "../../logger";
-import type { SagaOutcomeContext } from "../../types";
-import { buildTicketBody, TICKET_LABELS } from "./common";
+import { namedLogger } from "../../logger.js";
+import type { SagaOutcomeContext } from "../../types.js";
+import { buildTicketBody, TICKET_LABELS } from "./common.js";
 
-const log = namedLogger("saga-core:jira-ticket");
+const log = namedLogger("@torus/saga:jira-ticket");
 
 export interface JiraConfig {
 	host?: string;

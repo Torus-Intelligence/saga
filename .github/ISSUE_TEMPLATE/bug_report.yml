@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible Saga issue.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the observed behavior and the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal fixture, adapter snippet, or command sequence.
+      render: markdown
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "@torus/saga 0.0.1"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste errors, failed assertions, or trajectory snippets.
+      render: text

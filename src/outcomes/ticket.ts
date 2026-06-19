@@ -5,10 +5,10 @@
  * nothing was filed.
  */
 
-import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types";
-import { handleGitHubIssueFailure } from "./tickets/github-issues";
-import { handleJiraFailure } from "./tickets/jira";
-import { handleLinearFailure } from "./tickets/linear";
+import type { SagaOutcomeAdapter, SagaOutcomeContext } from "../types.js";
+import { handleGitHubIssueFailure } from "./tickets/github-issues.js";
+import { handleJiraFailure } from "./tickets/jira.js";
+import { handleLinearFailure } from "./tickets/linear.js";
 
 export type TicketProvider = "linear" | "jira" | "github_issues";
 
