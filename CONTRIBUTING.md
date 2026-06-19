@@ -20,6 +20,12 @@ bun run test:examples
 - Do not add live-service requirements to default tests.
 - Keep README examples runnable or clearly marked as sketches.
 
+## Branches
+
+- Keep `main` releasable.
+- Use short-lived feature branches.
+- Merge through pull requests after CI passes.
+
 ## Pull Requests
 
 Include:
