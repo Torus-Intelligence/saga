@@ -29,7 +29,7 @@ test("default runSagaCore makes zero network calls", async () => {
 	globalThis.fetch = (() => {
 		networkUsed = true;
 		throw new Error("network call in default lane");
-	}) as typeof fetch;
+	}) as unknown as typeof fetch;
 
 	try {
 		const result = await runSagaCore(
