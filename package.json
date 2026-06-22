@@ -24,6 +24,7 @@
 	"files": [
 		"assets",
 		"dist",
+		"schema",
 		"skills",
 		"README.md",
 		"CONTRIBUTING.md",
@@ -49,6 +50,7 @@
 		"examples/*"
 	],
 	"scripts": {
+		"gen:schema": "bun run scripts/gen-saga-schema.ts",
 		"build": "rm -rf dist && tsc -p tsconfig.build.json",
 		"test": "bun test --timeout 15000 src/__tests__/",
 		"test:examples": "bun run build && bun test --timeout 15000 examples/tickets/src/__tests__/",
@@ -64,6 +66,7 @@
 	},
 	"devDependencies": {
 		"@types/bun": "^1.3.14",
+		"ajv": "^8.20.0",
 		"typescript": "^6.0.3"
 	}
 }
