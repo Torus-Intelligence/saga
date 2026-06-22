@@ -27,6 +27,27 @@ cd saga && bun install
 bun run test:examples
 ```
 
+## Saga is the oracle; explorers are the input
+
+Saga is the fast, deterministic regression gate — not a live test generator.
+Pair it with an explorer that drives the real product and discovers journeys:
+[gstack `/qa`](https://github.com/garrytan/gstack), Playwright, Arga, or your
+own agent. Capture a run, then crystallize it into a permanent fixture:
+
+```ts
+import { fixtureFromTrajectoryJsonl } from "@torus-oss/saga";
+import { writeFileSync, readFileSync } from "node:fs";
+
+const yaml = fixtureFromTrajectoryJsonl(
+  readFileSync("./run.trajectory.jsonl", "utf8"),
+);
+writeFileSync("./fixtures/discovered.saga.yaml", yaml);
+```
+
+The discovered journey now runs forever in ~2s as a deterministic gate.
+Live-agent and real-browser execution are documented seams (see the skill),
+deliberately left to explorers rather than built into Saga.
+
 [Example](./examples/tickets) · [Agent skill](./skills/saga) · [Contributing](./CONTRIBUTING.md) · [Security](./SECURITY.md)
 
 ## The Shape
@@ -91,12 +112,11 @@ When published to npm:
 bun add @torus-oss/saga
 ```
 
-For coding agents, copy or install the bundled skill from `skills/saga` and
-ask:
+For coding agents, install the bundled skill one of three ways:
 
-```text
-Use $saga to add a Saga fixture for the new escalation workflow.
-```
+- **Claude Code plugin:** `/plugin marketplace add Torus-Intelligence/saga` then `/plugin install saga` *(requires the plugin manifest from Phase 4).*
+- **Manual:** copy `skills/saga` into `~/.claude/skills/` (Claude Code) or your runtime's skills directory.
+- **From npm:** after `bun add @torus-oss/saga`, the skill ships at `node_modules/@torus-oss/saga/skills/saga` — copy it into your skills directory.
 
 ## 60 Second Version
 
