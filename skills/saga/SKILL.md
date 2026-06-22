@@ -42,7 +42,7 @@ Live-agent and real-browser execution are seams, not built in — wire your own.
    - Extend `BaseSagaEventSchema` and `BaseSagaManifestSchema`.
    - Register matchers with `MatcherRegistry`.
    - Implement `dispatch` by switching on `event.kind` and calling injectors.
-5. Run the narrow fixture test first, then the full Saga suite.
+5. Run the narrow fixture test first, then the full Saga suite. Before shipping, run the complete gate with `bun run ci` (typecheck, unit tests, example tests, dist smoke, pack dry-run).
 6. If a failure is non-obvious, inspect the trajectory JSONL path in the failure and work from the observed effects, not assumptions.
 
 ## References
