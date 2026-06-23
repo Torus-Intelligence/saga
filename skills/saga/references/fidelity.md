@@ -130,7 +130,7 @@ assertAgainstBaseline(actualTrajectory, baseline);
 Use this to:
 - Lock down the observable behavior of your core workflow.
 - Detect unintended behavior changes across refactors.
-- Compare staging runs against production baselines (Phase 3 pattern).
+- Compare staging runs against production baselines.
 
 ---
 

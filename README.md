@@ -98,19 +98,17 @@ customer returns -> injectFollowUp       -> createFollowUp()  -> SatisfactionSur
 
 ## Install
 
-Source checkout:
+```bash
+bun add @torus-oss/saga
+```
+
+Or work from a source checkout:
 
 ```bash
 git clone https://github.com/Torus-Intelligence/saga.git
 cd saga
 bun install
 bun run test:examples
-```
-
-When published to npm:
-
-```bash
-bun add @torus-oss/saga
 ```
 
 For coding agents, install the bundled skill one of three ways:
@@ -208,12 +206,18 @@ for cross-event continuity.
 | `MatcherRegistry` | Register typed comparison logic per effect kind. |
 | `save:` | Capture values from one event and use them later with `{{saved.name}}`. |
 | `TrajectoryRecorder` | Record each event, observation, and failure as JSONL. |
+| `fixtureFromTrajectory` | Crystallize a recorded trajectory (or explorer run) into a `.saga.yaml` fixture. |
+| Cassettes + twins | Record/replay external responses deterministically; reference GitHub/Slack/Stripe twins via `@torus-oss/saga/twins`. |
+| Differential oracle | Diff a run's effects against a recorded baseline (`diffTrajectories` / `assertAgainstBaseline`). |
 | Outcome adapters | Fail fast, draft a PR, open a ticket, or route by severity. |
 | Persona modules | Scrape, fingerprint, discriminate, and evolve synthetic cast members. |
 
-## Codex Skill
+All of the fidelity surfaces (cassettes, differential oracle) are opt-in; the
+default `runSagaCore` run stays in-process, deterministic, and network-free.
 
-`skills/saga` tells Codex how to:
+## Agent Skill
+
+`skills/saga` tells coding agents how to:
 
 - author `*.saga.yaml` fixtures;
 - wire event schemas, effect schemas, injectors, and matchers;
@@ -251,13 +255,17 @@ bun run test:examples
 
 ```text
 src/
-  runner.ts              YAML loader and event dispatcher
-  verifier.ts            effect matcher and save capture logic
-  trajectory.ts          JSONL trajectory dump support
-  outcomes/              fail-stop, auto-PR, ticket, hybrid adapters
-  persona/               scrape, fingerprint, discriminator, evolve
-examples/tickets/        neutral reference app
-skills/saga/               Codex skill for AI agents using Saga
+  runner.ts                    YAML loader and event dispatcher
+  verifier.ts                  effect matcher and save capture logic
+  trajectory.ts                JSONL trajectory dump support
+  fixture-from-trajectory.ts   recorded run -> .saga.yaml fixture
+  cassette.ts                  record/replay twins for stubbed boundaries
+  differential.ts              baseline trajectory diff oracle
+  twins/                       GitHub/Slack/Stripe reference twins
+  outcomes/                    fail-stop, auto-PR, ticket, hybrid adapters
+  persona/                     scrape, fingerprint, discriminator, evolve
+examples/tickets/              neutral reference app
+skills/saga/                   agent skill for coding agents using Saga
 ```
 
 ## Development
@@ -271,4 +279,6 @@ bun run test:examples
 
 ## Status
 
-The API is early and expected to change before 1.0.
+Saga is pre-1.0. Public APIs may change between minor releases until 1.0; the
+project follows [semver](https://semver.org/), and notable changes are tracked
+in [CHANGELOG.md](./CHANGELOG.md).
