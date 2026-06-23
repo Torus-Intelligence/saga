@@ -76,5 +76,8 @@ export {
 export * from "./recorder.js";
 export * from "./runner.js";
 export * from "./trajectory.js";
+export * from "./fixture-from-trajectory.js";
+export * from "./cassette.js";
+export * from "./differential.js";
 export * from "./types.js";
 export * from "./verifier.js";

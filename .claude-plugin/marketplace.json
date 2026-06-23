@@ -1,0 +1,14 @@
+{
+	"name": "saga-tools",
+	"description": "Saga agent framework and utilities",
+	"owner": {
+		"name": "Torus Intelligence"
+	},
+	"plugins": [
+		{
+			"name": "saga",
+			"source": "./",
+			"description": "Author, adapt, and run Saga scenario tests for backend or agent workflows."
+		}
+	]
+}

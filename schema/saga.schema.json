@@ -1,0 +1,76 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"saga_id": {
+			"type": "string",
+			"pattern": "^[a-z0-9-]+$"
+		},
+		"harness_version": {
+			"type": "integer",
+			"exclusiveMinimum": 0,
+			"maximum": 9007199254740991
+		},
+		"severity": {
+			"type": "string",
+			"enum": [
+				"critical",
+				"warning",
+				"info"
+			]
+		},
+		"duration_days": {
+			"type": "integer",
+			"exclusiveMinimum": 0,
+			"maximum": 9007199254740991
+		},
+		"events": {
+			"minItems": 1,
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"at": {
+						"type": "string"
+					},
+					"kind": {
+						"type": "string"
+					},
+					"actor": {
+						"type": "string"
+					},
+					"project_id": {
+						"type": "string"
+					},
+					"expected_effects": {
+						"type": "array",
+						"items": {}
+					},
+					"save": {
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "string"
+						}
+					}
+				},
+				"required": [
+					"at",
+					"kind"
+				],
+				"additionalProperties": {}
+			}
+		}
+	},
+	"required": [
+		"saga_id",
+		"duration_days",
+		"events"
+	],
+	"additionalProperties": {},
+	"$id": "https://torus-oss.github.io/saga/saga.schema.json",
+	"title": "Saga Manifest",
+	"description": "Generic Saga manifest. Domains extend this with their own event kinds and expected_effect shapes."
+}

@@ -7,6 +7,23 @@ description: Author, adapt, and run Saga scenario tests for backend or agent wor
 
 Saga is a small dev-tool harness for multi-step workflow tests. It loads YAML scenarios, dispatches events into the user's real code through injectors, records observed effects, verifies them with typed matchers, and can route failures to fail-stop, auto-PR, or ticket adapters.
 
+## Mental model: oracle, not explorer
+
+Saga is the deterministic verification oracle. The default run is in-process,
+makes no network calls, and finishes in ~2s. It tests the platform's real
+logic in response to a journey — not the agent's judgment and not the
+frontend. Pair it with a live explorer (gstack /qa, Playwright, Arga, your own
+agent) that discovers journeys, then crystallize their recorded run into a
+fixture with `fixtureFromTrajectory` / `fixtureFromTrajectoryJsonl`.
+
+Fidelity ladder (all opt-in, default stays deterministic):
+1. Authored fixtures (default).
+2. Cassettes — replay recorded real responses for stubbed boundaries.
+3. Production-baseline differential oracle — diff a run against a recorded
+   golden trajectory.
+
+Live-agent and real-browser execution are seams, not built in — wire your own.
+
 ## Core Workflow
 
 1. Inspect the existing Saga surface before editing:
@@ -25,7 +42,7 @@ Saga is a small dev-tool harness for multi-step workflow tests. It loads YAML sc
    - Extend `BaseSagaEventSchema` and `BaseSagaManifestSchema`.
    - Register matchers with `MatcherRegistry`.
    - Implement `dispatch` by switching on `event.kind` and calling injectors.
-5. Run the narrow fixture test first, then the full Saga suite.
+5. Run the narrow fixture test first, then the full Saga suite. Before shipping, run the complete gate with `bun run ci` (typecheck, unit tests, example tests, dist smoke, pack dry-run).
 6. If a failure is non-obvious, inspect the trajectory JSONL path in the failure and work from the observed effects, not assumptions.
 
 ## References

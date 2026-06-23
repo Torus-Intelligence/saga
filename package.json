@@ -1,6 +1,6 @@
 {
 	"name": "@torus-oss/saga",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "Apache-2.0",
 	"description": "YAML-driven scenario runner with pluggable dispatch, verification, trajectories, outcome adapters, and persona evolution.",
 	"type": "module",
@@ -24,6 +24,7 @@
 	"files": [
 		"assets",
 		"dist",
+		"schema",
 		"skills",
 		"README.md",
 		"CONTRIBUTING.md",
@@ -43,12 +44,17 @@
 		"./persona": {
 			"types": "./dist/persona/index.d.ts",
 			"import": "./dist/persona/index.js"
+		},
+		"./twins": {
+			"types": "./dist/twins/index.d.ts",
+			"import": "./dist/twins/index.js"
 		}
 	},
 	"workspaces": [
 		"examples/*"
 	],
 	"scripts": {
+		"gen:schema": "bun run scripts/gen-saga-schema.ts",
 		"build": "rm -rf dist && tsc -p tsconfig.build.json",
 		"test": "bun test --timeout 15000 src/__tests__/",
 		"test:examples": "bun run build && bun test --timeout 15000 examples/tickets/src/__tests__/",
@@ -64,6 +70,7 @@
 	},
 	"devDependencies": {
 		"@types/bun": "^1.3.14",
+		"ajv": "^8.20.0",
 		"typescript": "^6.0.3"
 	}
 }
