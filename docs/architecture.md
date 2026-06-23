@@ -19,9 +19,9 @@ records observed effects, and verifies them against typed `expected_effects`.
   does the platform behave correctly," not whether the model chooses X.
 - **Real external services.** You assert against your own matchers/injectors.
   If your stub diverges from the real API, Saga can pass while production
-  breaks. Fidelity ceiling = honesty of your stubs. Cassettes (Phase 2) and
-  the production-baseline differential oracle (Phase 3) raise that ceiling by
-  sourcing inputs from recorded reality instead of imagination.
+  breaks. Fidelity ceiling = honesty of your stubs. Cassettes and the
+  production-baseline differential oracle raise that ceiling by sourcing
+  inputs from recorded reality instead of imagination.
 - **The frontend surfaces.** Events inject at the code level, not via a
   browser.
 

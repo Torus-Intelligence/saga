@@ -32,7 +32,7 @@ The adapter should be a side-effect boundary. Keep verification deterministic be
 
 The persona surface is optional and generic:
 
-- `scrape`: collect source profiles through pluggable adapters.
+- `scrape`: collect source profiles through pluggable adapters. The bundled LinkedIn/GitHub/Conference sources return toy data only and throw when marked configured without `allow_toy_fallback: true`; inject your own `PersonaScrapeSource` for real data.
 - `fingerprint`: convert profiles or utterances into domain dimensions.
 - `discriminator`: score real-vs-synthetic separation with the logistic-regression baseline.
 - `evolve`: generate and mutate synthetic personas against the discriminator and coverage goals.
