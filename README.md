@@ -114,7 +114,7 @@ bun add @torus-oss/saga
 
 For coding agents, install the bundled skill one of three ways:
 
-- **Claude Code plugin:** `/plugin marketplace add Torus-Intelligence/saga` then `/plugin install saga` *(requires the plugin manifest from Phase 4).*
+- **Claude Code plugin:** `/plugin marketplace add Torus-Intelligence/saga` then `/plugin install saga@saga-tools`.
 - **Manual:** copy `skills/saga` into `~/.claude/skills/` (Claude Code) or your runtime's skills directory.
 - **From npm:** after `bun add @torus-oss/saga`, the skill ships at `node_modules/@torus-oss/saga/skills/saga` — copy it into your skills directory.
 

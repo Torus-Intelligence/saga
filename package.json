@@ -1,6 +1,6 @@
 {
 	"name": "@torus-oss/saga",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "Apache-2.0",
 	"description": "YAML-driven scenario runner with pluggable dispatch, verification, trajectories, outcome adapters, and persona evolution.",
 	"type": "module",
@@ -44,6 +44,10 @@
 		"./persona": {
 			"types": "./dist/persona/index.d.ts",
 			"import": "./dist/persona/index.js"
+		},
+		"./twins": {
+			"types": "./dist/twins/index.d.ts",
+			"import": "./dist/twins/index.js"
 		}
 	},
 	"workspaces": [

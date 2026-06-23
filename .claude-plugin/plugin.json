@@ -1,0 +1,8 @@
+{
+	"name": "saga",
+	"description": "Author, adapt, and run Saga scenario tests for backend or agent workflows.",
+	"version": "0.1.0",
+	"author": {
+		"name": "Torus Intelligence"
+	}
+}
