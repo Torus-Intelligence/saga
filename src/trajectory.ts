@@ -51,15 +51,21 @@ export class TrajectoryRecorder {
 		saga_id: string;
 		fixture_path: string;
 		harness_version?: number;
+		seed?: number;
 	}) {
 		this.header = {
 			saga_id: args.saga_id,
 			harness_version: args.harness_version ?? CURRENT_HARNESS_VERSION,
 			fixture_path: args.fixture_path,
 			started_at: new Date().toISOString(),
-			seed: 0,
+			seed: resolveSeed(args.seed),
 			commit_hash: resolveCommitHash(),
 		};
+	}
+
+	/** The resolved seed recorded for this run. Re-run with SAGA_SEED=<seed> to reproduce. */
+	get seed(): number {
+		return this.header.seed;
 	}
 
 	record(entry: TrajectoryEntry): void {
@@ -86,6 +92,23 @@ export class TrajectoryRecorder {
 	snapshot(): { header: TrajectoryHeader; entries: TrajectoryEntry[] } {
 		return { header: this.header, entries: [...this.entries] };
 	}
+}
+
+/**
+ * Resolve the run seed: explicit argument, else the SAGA_SEED env var, else
+ * a random 32-bit seed. The resolved value is recorded in the trajectory
+ * header so any run can be reproduced with SAGA_SEED=<seed>.
+ */
+export function resolveSeed(explicit?: number): number {
+	if (typeof explicit === "number" && Number.isFinite(explicit)) {
+		return Math.floor(explicit);
+	}
+	const env = process.env.SAGA_SEED;
+	if (env !== undefined && env !== "") {
+		const parsed = Number.parseInt(env, 10);
+		if (Number.isFinite(parsed)) return parsed;
+	}
+	return Math.floor(Math.random() * 0x1_0000_0000);
 }
 
 function resolveCommitHash(): string {
