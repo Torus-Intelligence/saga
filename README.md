@@ -2,7 +2,8 @@
 
 [![CI](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml/badge.svg)](https://github.com/Torus-Intelligence/saga/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
-[![Package: @torus-oss/saga](https://img.shields.io/badge/package-%40torus--oss%2Fsaga-cb3837.svg)](./package.json)
+[![npm version](https://img.shields.io/npm/v/@torus-oss/saga.svg)](https://www.npmjs.com/package/@torus-oss/saga)
+[![npm downloads](https://img.shields.io/npm/dm/@torus-oss/saga.svg)](https://www.npmjs.com/package/@torus-oss/saga)
 
 ![Saga banner](./assets/saga-banner.svg)
 
