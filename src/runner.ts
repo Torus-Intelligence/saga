@@ -43,6 +43,8 @@ export interface DispatchArgs<
 	manifest: M;
 	fixturesRoot: string;
 	projectId: string;
+	/** Resolved run seed (explicit opt → SAGA_SEED env → random), recorded in the trajectory. */
+	seed: number;
 }
 
 export type DispatchFn<E extends BaseSagaEvent, M extends BaseSagaManifest> = (
@@ -66,6 +68,8 @@ export interface RunSagaOpts<
 	M extends BaseSagaManifest = BaseSagaManifest,
 > {
 	recorder?: SagaRecorder;
+	/** Explicit run seed. Falls back to SAGA_SEED env, then a random seed. Recorded in the trajectory. */
+	seed?: number;
 	fixturesRoot?: string;
 	trajectory?: TrajectoryRecorder;
 	trajectoryDir?: string;
@@ -131,7 +135,9 @@ export async function runSagaCore<
 			saga_id: manifest.saga_id,
 			fixture_path: manifestPath,
 			harness_version: fixtureVersion,
+			seed: opts.seed,
 		});
+	const seed = trajectory.seed;
 
 	const projectId = opts.inferProjectId
 		? opts.inferProjectId(manifest)
@@ -167,6 +173,7 @@ export async function runSagaCore<
 			manifest,
 			fixturesRoot: fixturesRootResolved,
 			projectId,
+			seed,
 		});
 
 		recorder.ingest(sync);

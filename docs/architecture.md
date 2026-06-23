@@ -25,6 +25,13 @@ records observed effects, and verifies them against typed `expected_effects`.
 - **The frontend surfaces.** Events inject at the code level, not via a
   browser.
 
+> **Note on the bundled persona scrape sources.** `LinkedInScrapeSource`,
+> `GitHubScrapeSource`, and `ConferenceTalkScrapeSource` return **bundled toy
+> data only** — they perform no real scraping or vendor enrichment. The
+> credentialed sources throw if marked configured without
+> `allow_toy_fallback: true`, so a credential-shaped surface never silently
+> returns fake data. Inject your own `PersonaScrapeSource` for real data.
+
 ## Oracle, not explorer
 
 Saga is the deterministic gate. Pair it with a live **explorer** — gstack
